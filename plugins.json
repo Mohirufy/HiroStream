@@ -1,0 +1,178 @@
+[
+    {
+        "iconUrl": "https://icons.duckduckgo.com/ip3/154.26.137.28.ico",
+        "jarFileSize": 85613,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 18985,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Mohirufy"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 1,
+        "internalName": "AnimeSail",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/AnimeSail.jar",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/AnimeSail.cs3",
+        "name": "AnimeSail"
+    },
+    {
+        "iconUrl": "https://icons.duckduckgo.com/ip3/ww3.anoboy.app.ico",
+        "jarFileSize": 96816,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 23039,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Mohirufy"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 5,
+        "internalName": "Anoboy",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Anoboy.jar",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Anoboy.cs3",
+        "name": "Anoboy"
+    },
+    {
+        "iconUrl": "https://icons.duckduckgo.com/ip3/tv10.idlixku.com.ico",
+        "jarFileSize": 89852,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 23426,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Hexated, Phisher98, Mohirufy"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "Idlix",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Idlix.jar",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Idlix.cs3",
+        "name": "Idlix"
+    },
+    {
+        "iconUrl": "https://icons.duckduckgo.com/ip3/v8.kuramanime.tel.ico",
+        "jarFileSize": 84569,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 20926,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Mohirufy"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 2,
+        "internalName": "Kuramanime",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Kuramanime.jar",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Kuramanime.cs3",
+        "name": "Kuramanime"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=tv7.lk21.am.in&sz=%size%",
+        "jarFileSize": 97930,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 20968,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Hexated, Phisher98, Mohirufy"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 7,
+        "internalName": "LayarKacaProvider",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/LayarKacaProvider.jar",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/LayarKacaProvider.cs3",
+        "name": "LayarKacaProvider"
+    },
+    {
+        "iconUrl": "https://icons.duckduckgo.com/ip3/otakudesu.best.ico",
+        "jarFileSize": 71035,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 17711,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Mohirufy"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 2,
+        "internalName": "Otakudesu",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Otakudesu.jar",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Otakudesu.cs3",
+        "name": "Otakudesu"
+    },
+    {
+        "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ww03.pencurimovie.bond&size=%size%",
+        "jarFileSize": 48911,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 12656,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Phisher98"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 4,
+        "internalName": "Pencurimovie",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Pencurimovie.jar",
+        "description": "Pencurimovie ",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Pencurimovie.cs3",
+        "name": "Pencurimovie"
+    },
+    {
+        "iconUrl": "https://icons.duckduckgo.com/ip3/samehadaku.how.ico",
+        "jarFileSize": 52594,
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Mohirufy/HiroStream",
+        "fileSize": 13745,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "Mohirufy"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 4,
+        "internalName": "Samehadaku",
+        "jarUrl": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Samehadaku.jar",
+        "url": "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/Samehadaku.cs3",
+        "name": "Samehadaku"
+    }
+]

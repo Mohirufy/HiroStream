@@ -1,0 +1,8 @@
+{
+    "name": "Mohirufy Repo",
+    "description": "Cloudstream Mohirufy Repo",
+    "manifestVersion": 1,
+    "pluginLists": [
+      "https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/plugins.json"
+    ]
+}
