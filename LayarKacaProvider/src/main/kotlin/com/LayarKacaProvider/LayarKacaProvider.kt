@@ -190,8 +190,8 @@ class LayarKacaProvider : MainAPI() {
             }.amap {
                 val test=it.getIframe()
                 Log.d("Phisher",test)
-            loadExtractor(it.getIframe(), mainUrl, subtitleCallback, callback)
-        }
+                loadExtractor(it.getIframe(), mainUrl, subtitleCallback, callback)
+            }
         return true
     }
 

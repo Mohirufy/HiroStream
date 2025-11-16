@@ -1,5 +1,6 @@
 package com.layarKacaProvider
 
+import com.lagradost.api.Log
 import com.lagradost.cloudstream3.SubtitleFile
 import com.lagradost.cloudstream3.app
 import com.lagradost.cloudstream3.extractors.Filesim
@@ -9,6 +10,32 @@ import com.lagradost.cloudstream3.utils.INFER_TYPE
 import com.lagradost.cloudstream3.utils.getQualityFromName
 import com.lagradost.cloudstream3.utils.newExtractorLink
 
+open class Emturbovid : ExtractorApi() {
+    override val name = "Emturbovid"
+    override val mainUrl = "https://emturbovid.com"
+    override val requiresReferer = true
+    
+    override suspend fun getUrl(
+            url: String,
+            referer: String?,
+            subtitleCallback: (SubtitleFile) -> Unit,
+            callback: (ExtractorLink) -> Unit
+    ) {
+        val document = app.get(url).document
+        val fileUrl = document.select("div#video_player").attr("data-hash")
+
+        callback.invoke(
+            newExtractorLink(
+                this.name,
+                this.name,
+                url = fileUrl,
+                INFER_TYPE
+            ) {
+                this.referer = url
+            }
+        )
+    }
+}
 
 open class Hownetwork : ExtractorApi() {
     override val name = "Hownetwork"
@@ -20,7 +47,7 @@ open class Hownetwork : ExtractorApi() {
             referer: String?,
             subtitleCallback: (SubtitleFile) -> Unit,
             callback: (ExtractorLink) -> Unit
-    ) {
+    ) { 
         val id = url.substringAfter("id=")
         val res = app.post(
                 "$mainUrl/api.php?id=$id",
@@ -34,30 +61,27 @@ open class Hownetwork : ExtractorApi() {
                 )
         ).parsedSafe<Sources>()
 
-        res?.data?.map {
+        res?.file?.let { fileUrl ->
             callback.invoke(
                 newExtractorLink(
                     this.name,
                     this.name,
-                    url = it.file,
+                    url = fileUrl,
                     INFER_TYPE
                 ) {
                     this.referer = url
-                    this.quality = getQualityFromName(it.label)
+                    this.quality = getQualityFromName(res.file ?: "")
                 }
             )
         }
-
     }
 
     data class Sources(
-            val data: ArrayList<Data>
-    ) {
-        data class Data(
-                val file: String,
-                val label: String?,
-        )
-    }
+        val poster: String?,
+        val file: String?,
+        val type: String?,
+        val title: String? 
+    ) 
 }
 
 class Furher : Filesim() {

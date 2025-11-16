@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Anoboy : MainAPI() {
-    override var mainUrl = "https://ww3.anoboy.app"
+    override var mainUrl = "https://ww1.anoboy.boo"
     
     override var name = "Anoboy"
     override var hasMainPage = true
