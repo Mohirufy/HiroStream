@@ -9,7 +9,7 @@ HiroStream adalah repositori ekstensi (plugin) untuk aplikasi Cloudstream.
 1. Buka aplikasi Cloudstream.
 2. Navigasikan ke **Settings → Extensions → Add Repository**.
 3. Masukkan URL berikut sebagai repositori: 
-```http
+```bash
 https://raw.githubusercontent.com/Mohirufy/HiroStream/builds/repo.json
 ```
 4. Beri nama repositori sesuai keinginan (misalnya: `HiroStream`).

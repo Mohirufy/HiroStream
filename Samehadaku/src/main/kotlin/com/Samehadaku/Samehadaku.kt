@@ -72,21 +72,21 @@ class Samehadaku : MainAPI() {
         val tvtag = if (url.contains("anime")) TvType.TvSeries else TvType.AnimeMovie
         val genre = document.select("div.genre-info").select("a").map { it.text() }
         val episodes = mutableListOf<Episode>()
-            document.select("div.lstepsiode.listeps").amap { info -> 
-                info.select("ul li div.epsleft span.lchx a").forEach { it ->
-                    // val name = it.select("a").text().substringAfter("Episode").trim()
-                    val href = it.select("a").attr("href") ?: ""
-                    val Rawepisode = it.select("a").text().substringAfter("Episode").trim().toIntOrNull()
-                    episodes.add(
-                        newEpisode(href)
-                        {
-                            "Episode"
-                            this.episode=Rawepisode
-                            // this.name=name
-                        }
-                    )
-                }
+        document.select("div.lstepsiode.listeps").amap { info -> 
+            info.select("ul li div.epsleft span.lchx a").forEach { it ->
+                // val name = it.select("a").text().substringAfter("Episode").trim()
+                val href = it.select("a").attr("href") ?: ""
+                val Rawepisode = it.select("a").text().substringAfter("Episode").trim().toIntOrNull()
+                episodes.add(
+                    newEpisode(href)
+                    {
+                        "Episode"
+                        this.episode=Rawepisode
+                        // this.name=name
+                    }
+                )
             }
+        }
         return newAnimeLoadResponse(title, url, TvType.Anime) {
             this.posterUrl = poster
             this.plot = description
