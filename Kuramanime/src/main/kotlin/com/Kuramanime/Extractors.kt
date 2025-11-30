@@ -137,31 +137,44 @@ class KuramaDrive : ExtractorApi() {
     
     private fun decryptToken(encryptedToken: String, passphrase: String): String? {
         return try {
-            val jsonStr = android.util.Base64.decode(encryptedToken, android.util.Base64.DEFAULT).toString(Charsets.UTF_8)
+            val decoder = java.util.Base64.getDecoder()
+
+            // Decode JSON wrapper
+            val jsonStr = decoder.decode(encryptedToken).toString(Charsets.UTF_8)
             val json = org.json.JSONObject(jsonStr)
-            
-            val iv = android.util.Base64.decode(json.getString("iv"), android.util.Base64.DEFAULT)
-            val ct = android.util.Base64.decode(json.getString("ct"), android.util.Base64.DEFAULT)
-            val tag = android.util.Base64.decode(json.getString("tag"), android.util.Base64.DEFAULT)
-            
-            // Derive key
+
+            // Decode fields
+            val iv = decoder.decode(json.getString("iv"))
+            val ct = decoder.decode(json.getString("ct"))
+            val tag = decoder.decode(json.getString("tag"))
+
+            // Derive key from passphrase
             val digest = java.security.MessageDigest.getInstance("SHA-256")
             val key = digest.digest(passphrase.toByteArray(Charsets.UTF_8))
-            
-            // Verify HMAC
+
+            // Verify HMAC first
             val hmac = javax.crypto.Mac.getInstance("HmacSHA256")
             hmac.init(javax.crypto.spec.SecretKeySpec(key, "HmacSHA256"))
+
             val hmacInput = "v1|aes-256-cbc|hmac-sha256".toByteArray() + iv + ct
             val calculatedTag = hmac.doFinal(hmacInput)
-            if (!calculatedTag.contentEquals(tag)) return null
-            
-            // Decrypt
+
+            if (!calculatedTag.contentEquals(tag)) {
+                Log.d("KuramaDrive", "HMAC mismatch")
+                return null
+            }
+
+            // AES-CBC decrypt
             val cipher = javax.crypto.Cipher.getInstance("AES/CBC/PKCS5Padding")
-            cipher.init(javax.crypto.Cipher.DECRYPT_MODE, 
-                       javax.crypto.spec.SecretKeySpec(key, "AES"),
-                       javax.crypto.spec.IvParameterSpec(iv))
-            
-            String(cipher.doFinal(ct), Charsets.UTF_8)
+            cipher.init(
+                javax.crypto.Cipher.DECRYPT_MODE,
+                javax.crypto.spec.SecretKeySpec(key, "AES"),
+                javax.crypto.spec.IvParameterSpec(iv)
+            )
+
+            val decrypted = cipher.doFinal(ct)
+            String(decrypted, Charsets.UTF_8)
+
         } catch (e: Exception) {
             Log.d("KuramaDrive", "Decrypt failed: ${e.message}")
             null
