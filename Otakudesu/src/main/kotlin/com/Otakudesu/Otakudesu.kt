@@ -116,13 +116,13 @@ class Otakudesu : MainAPI() {
         loadExtractor(desu, subtitleCallback, callback)
 
         document.select("div.download ul li").map { el ->
-            el.select("a").apmap {
+            el.select("a").map { li ->
                 
-                val res = app.get(it.attr("href"))
+                val res = app.get(li.attr("href"))
                 val finalUrl = res.url
                 Log.d("Mohiro", finalUrl.toString())
                 loadFixedExtractor(
-                        fixUrl(app.get(it.attr("href")).url),
+                        fixUrl(app.get(li.attr("href")).url),
                         el.select("strong").text().substringAfter("Mp4"),
                         "$mainUrl/",
                         subtitleCallback,

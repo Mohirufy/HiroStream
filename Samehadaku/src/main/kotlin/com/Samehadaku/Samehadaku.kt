@@ -103,9 +103,9 @@ class Samehadaku : MainAPI() {
     ): Boolean {
         val document = app.get(data).document
         document.select("div#downloadb li").map { el ->
-            el.select("a").apmap {
+            el.select("a").map { li ->
                 loadFixedExtractor(
-                        fixUrl(it.attr("href")),
+                        fixUrl(li.attr("href")),
                         el.select("strong").text(),
                         "$mainUrl/",
                         subtitleCallback,
