@@ -112,18 +112,16 @@ class LayarKacaProvider : MainAPI() {
         val fixUrl = getProperLink(url)
         val document = app.get(fixUrl).document
         val baseurl=fetchURL(fixUrl)
-        val title = document.selectFirst("div.movie-info h1")?.text()?.trim().toString()
+        val title = document.selectFirst("div.movie-info h1")?.text()?.trim().toString().substringAfter("Nonton").substringBefore("Sub Indo")
         val poster = document.select("meta[property=og:image]").attr("content")
         val tags = document.select("div.tag-list span").map { it.text() }
-
         val year = Regex("\\d, (\\d+)").find(
             document.select("div.movie-info h1").text().trim()
         )?.groupValues?.get(1).toString().toIntOrNull()
         val tvType = if (document.selectFirst("#season-data") != null) TvType.TvSeries else TvType.Movie
         val description = document.selectFirst("div.meta-info")?.text()?.trim()?.substringBefore("Subtitle")
         val trailer = document.selectFirst("ul.action-left > li:nth-child(3) > a")?.attr("href")
-        val rating = document.selectFirst("div.info-tag strong")?.text()?.toRatingInt()
-
+        val rating = document.selectFirst("div.info-tag strong")?.text()
         val recommendations = document.select("li.slider article").map {
             val recName = it.selectFirst("h3")?.text()?.trim().toString()
             val recHref = baseurl+it.selectFirst("a")!!.attr("href")
@@ -160,7 +158,7 @@ class LayarKacaProvider : MainAPI() {
                 this.year = year
                 this.plot = description
                 this.tags = tags
-                this.rating = rating
+                this.score = Score.from10(rating)
                 this.recommendations = recommendations
                 addTrailer(trailer)
             }
@@ -170,7 +168,7 @@ class LayarKacaProvider : MainAPI() {
                 this.year = year
                 this.plot = description
                 this.tags = tags
-                this.rating = rating
+                this.score = Score.from10(rating)
                 this.recommendations = recommendations
                 addTrailer(trailer)
             }

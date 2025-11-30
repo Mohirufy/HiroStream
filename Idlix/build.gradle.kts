@@ -1,5 +1,5 @@
 // use an integer for version numbers
-version = 5
+version = 1
 
 
 cloudstream {
@@ -7,7 +7,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
 
     // description = "Lorem Ipsum"
-    authors = listOf("Mohirufy")
+    authors = listOf("Hexated, Phisher98, Mohirufy")
 
     /**
      * Status int as the following:
@@ -18,13 +18,13 @@ cloudstream {
      * */
     status = 1 // will be 3 if unspecified
     tvTypes = listOf(
-        "AnimeMovie",
-        "Anime",
-        "OVA",
+        "AsianDrama",
+        "Movie",
+        "TvSeries",
     )
 
 
-    iconUrl = "https://icons.duckduckgo.com/ip3/ww3.anoboy.app.ico"
+    iconUrl = "https://icons.duckduckgo.com/ip3/tv10.idlixku.com.ico"
 
     isCrossPlatform = true
 }

@@ -18,7 +18,7 @@ import kotlinx.coroutines.awaitAll
 
 class Kuramanime : MainAPI() {
     
-    override var mainUrl = "https://v4.kuramanime.run"
+    override var mainUrl = "https://v8.kuramanime.tel"
 
     override var name = "Kuramanime"
     override var hasMainPage = true
@@ -42,7 +42,7 @@ class Kuramanime : MainAPI() {
 
     override val mainPage = mainPageOf(
         "quick/ongoing?order_by=updated&page=" to "Terbaru",
-        "properties/season/summer-2025?order_by=popular" to "Musim Ini",
+        "properties/season/fall-2025?order_by=popular" to "Musim Ini",
         "quick/finished?order_by=updated" to "Selesai Tayang",
         "quick/movie?order_by=updated" to "Movie",
     )
@@ -147,7 +147,7 @@ class Kuramanime : MainAPI() {
         val document = app.get(data).document
         val page = getPageFromUrl(data)
 
-        val kpsValue = document.select("div[data-kps]")?.attr("data-kps")
+        val kpsValue = document.select("div[data-kk]")?.attr("data-kk")
         val js = app.get("https://v8.kuramanime.tel/assets/js/$kpsValue.js").text
 
         val pageTokenRegex = Regex("""MIX_PAGE_TOKEN_KEY:\s*'([^']+)'""")

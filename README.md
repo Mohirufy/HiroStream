@@ -26,6 +26,7 @@ Repositori ini mencakup beberapa provider populer film dan anime, di antaranya:
 - Samehadaku
 - Kuramanime
 - AnimeSail
+- Idlix
 
 ## Disclaimer DMCA
 

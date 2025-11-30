@@ -51,8 +51,7 @@ class Anoboy : MainAPI() {
             .let { it.substring(0, listOf(it.indexOf("("), it.indexOf("/"), it.indexOf("Season"), it.indexOf("|")).filter { idx -> idx >= 0 }.minOrNull() ?: it.length) }
             .trim()
         val href = fixUrl(this.attr("href"))
-        val posterUrl = fixUrlNull(this.select("div.amv amp-img").attr("src").toString())
-        
+        val posterUrl = fixUrlNull(this.select("div.amv img").attr("src").toString())
         return newAnimeSearchResponse(title, href, TvType.Anime) {
             this.posterUrl = posterUrl
         }
@@ -60,7 +59,13 @@ class Anoboy : MainAPI() {
 
     override suspend fun search(query: String): List<SearchResponse> {
             val document = app.get("${mainUrl}?s=$query", timeout = 50L).document
-            val results =document.select("div.column-content a:has(div.amv)").mapNotNull { it.toSearchResult() }
+            val results = document
+            .select("div.column-content a:has(div.amv)")
+            .filter {
+                val t = it.attr("title").lowercase()
+                !t.contains("episode") && !t.contains("download")
+            }
+        .mapNotNull { it.toSearchResult() }
         return results
     }
 
@@ -71,10 +76,9 @@ class Anoboy : MainAPI() {
         ) TvType.Movie else TvType.Anime
 
         val title = document.selectFirst("div.pagetitle h1")?.text()?.trim().toString().substringBefore("Subtitle")
-        val poster = document.select("div.column-three-fourth amp-img").attr("src").toString()
+        val poster = fixUrlNull(document.select("div.deskripsi img").attr("src").toString())
         val description = document.select("div.column-three-fourth div:nth-child(4)")?.text()?.trim()
         val tags = document.select("div.unduhan td#genre").text().trim().split(", ")
-
         val episodes: List<Episode> = if (document.select("div.singlelink a:matches(Streaming)").isNotEmpty()) {
             Log.d("Mohiro", "[Streaming]")
             val streamLink = fixUrl(
@@ -122,7 +126,6 @@ class Anoboy : MainAPI() {
 
         return if (tvType == TvType.Movie){
             val description = document.select("div.column-three-fourth div.unduhan")?.text()?.trim()
-            val poster = fixUrl(document.select("div.entry-content amp-img").attr("src"))
             newMovieLoadResponse(title, url, TvType.Movie, url) {
                 this.posterUrl = poster
                 this.plot = description
@@ -154,7 +157,6 @@ class Anoboy : MainAPI() {
         val blogger = document.select("iframe").attr("src")
         loadExtractor(blogger, subtitleCallback, callback)
 
-        // val vmiror = document.select("div.vmiror a")
         document.select("div.vmiror a").forEach { vm->
             val vmiror = fixUrl(vm.attr("data-video"))
             val documentVmiror = app.get(vmiror).document
@@ -164,7 +166,6 @@ class Anoboy : MainAPI() {
                 loadExtractor(url, subtitleCallback, callback)
             }
         }
-
         return true
     }
 }
